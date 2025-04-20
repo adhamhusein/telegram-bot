@@ -5,6 +5,7 @@ from datetime import datetime
 from telegram import Update, InputFile
 from telegram.ext import Application, MessageHandler, filters, ContextTypes
 import json
+from dotenv import load_dotenv
 
 from sys import path
 server_path = '/var/www/portfolio-website/app'
@@ -17,7 +18,8 @@ else:
     raise FileNotFoundError("Neither server nor local app path found.")
 from utils.dxf_converter import DXFConverter
 
-BOT_TOKEN = "7744183695:AAFE542XI3BkBNd9P6JWFjMA6FLVZ3-tl3c"
+load_dotenv()
+BOT_TOKEN = os.getenv("BOT_TOKEN")
 UPLOAD_DIR = tempfile.gettempdir()
 
 # Main document handler
